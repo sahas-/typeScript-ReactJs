@@ -13,6 +13,15 @@
     },
     "react-router/react-router.d.ts": {
       "commit": "35ba1a07e1ddafef621636fc8d0714f6f70ca479"
+    },
+    "flux/flux.d.ts": {
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
+    },
+    "eventemitter3/eventemitter3.d.ts": {
+      "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
+    },
+    "object-assign/object-assign.d.ts": {
+      "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
     }
   }
 }
