@@ -6,7 +6,13 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "react/react.d.ts": {
-      "commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
+      "commit": "35ba1a07e1ddafef621636fc8d0714f6f70ca479"
+    },
+    "react-dom/react-dom.d.ts": {
+      "commit": "35ba1a07e1ddafef621636fc8d0714f6f70ca479"
+    },
+    "react-router/react-router.d.ts": {
+      "commit": "35ba1a07e1ddafef621636fc8d0714f6f70ca479"
     }
   }
 }

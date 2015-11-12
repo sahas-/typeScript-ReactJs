@@ -1,28 +1,30 @@
 {
-  "name": "React-TypeScript-Starter",
+  "name": "heatmapClient",
   "version": "0.0.0",
-  "description": "An example/starter project for using React and TypeScript together",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/austentalbot/React-TypeScript-Starter.git"
+    "url": ""
   },
-  "author": "Austen Talbot <austentalbot@gmail.com> (http://austentalbot.com/)",
+  "author": "Sahas Subramanian",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/austentalbot/React-TypeScript-Starter/issues"
-  },
-  "homepage": "https://github.com/austentalbot/React-TypeScript-Starter",
   "dependencies": {
-    "react": "^0.13.3"
+    "react": "^0.14.2",
+    "tsd": "^0.6.5"
   },
   "devDependencies": {
     "browserify": "^10.2.4",
-    "gulp": "^3.9.0",
-    "gulp-typescript": "^2.7.8",
+    "glob": "^5.0.15",
+    "gulp": "latest",
+    "gulp-clean": "^0.3.1",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-typescript": "latest",
+    "rimraf": "^2.4.3",
     "vinyl-source-stream": "^1.1.0"
   }
 }
