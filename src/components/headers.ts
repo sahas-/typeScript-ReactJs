@@ -2,7 +2,7 @@
 /// <reference path="../../typings/react-dom/react-dom.d.ts" />
 import React = require('react');
 import DOM = require('react-dom');
-//import search = require('../images/search.svg');
+
 
 interface P {
   name?: string;

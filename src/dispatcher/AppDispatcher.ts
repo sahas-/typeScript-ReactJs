@@ -1,8 +1,6 @@
-///<reference path='../../typings/flux/flux.d.ts'/>
-///<reference path='../actions/ActionsMaster.ts'/>
+///<reference path="../../typings/flux/flux.d.ts"/>
 
 import flux = require('flux');
 
-var Dispatcher: flux.Dispatcher<AllActions> = new flux.Dispatcher();
-
-export = Dispatcher;
+var Dispatcher = new flux.Dispatcher();
+export=Dispatcher;

@@ -1,7 +1,13 @@
 /// <reference path="../../typings/react/react.d.ts" />
 /// <reference path="../../typings/react-dom/react-dom.d.ts" />
+/// <reference path="../actions/productIndexActions" />
+/// <reference path="../stores/productStore"/>
+
 import React = require('react');
 import DOM = require('react-dom');
+import actions = require('../actions/productIndexActions');
+import store = require('../stores/productStore');
+
 interface P {
   name?: string;
 }
@@ -14,12 +20,18 @@ class productIndex extends React.Component<P,S>{
   render() {
 		return React.DOM.div({className:"productIndex-container"},
             React.createElement(gridHeader,{name:"gridHeader"}),
-            React.createElement(gridDataDiv,{name:"gridDataDiv"})
-                        
+            React.createElement(gridDataDiv,{name:"gridDataDiv"}),
+            React.createElement(test,{name:"test"})                        
             );
   }
 }
 
+class test extends React.Component<P,S>{
+  render(){
+    return React.DOM.label({onClick:actions.getProducts},store.getProducts()); 
+  }
+  
+}
 class gridHeader extends React.Component<P,S>{
   render(){
      return   React.DOM.ul({className:"flexbox"},
