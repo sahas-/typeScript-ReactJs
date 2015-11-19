@@ -17,6 +17,9 @@ interface S {
 }
 
 class productIndex extends React.Component<P,S>{
+  componentWillUpdate(){
+    console.log("received update");
+  }
   render() {
 		return React.DOM.div({className:"productIndex-container"},
             React.createElement(gridHeader,{name:"gridHeader"}),
@@ -27,11 +30,14 @@ class productIndex extends React.Component<P,S>{
 }
 
 class test extends React.Component<P,S>{
+  componentWillUpdate(){
+    console.log("received update");
+  }
   render(){
     return React.DOM.label({onClick:actions.getProducts},store.getProducts()); 
   }
-  
 }
+
 class gridHeader extends React.Component<P,S>{
   render(){
      return   React.DOM.ul({className:"flexbox"},

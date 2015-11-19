@@ -7,7 +7,7 @@
 import EventEmitter = require('eventemitter3');
 import dispatcher = require('../dispatcher/appDispatcher');
 import productIndexActions = require('../actions/productIndexActions');
-//import actionTypes = require('../constants/actionTypes');
+import actionTypes = require('../constants/actionTypes');
 
 var CHANGE_EVENT = 'change';
 var name="unchanged";
@@ -34,13 +34,16 @@ class productStore extends EventEmitter {
 
 var _productStore = new productStore();
 
-dispatcher.register((_action)=>{
-	
-	switch(_action){
+dispatcher.register((payload)=>{
+
+	switch(payload.actionType){
+		case actionTypes.actions.GET_PRODUCTS:
+			console.log("test");
+			name = "sahas";
+			_productStore.emitChange();
+			break;
 		default: 
-			name="sahas";
-			console.log(_action);
-			console.log("action fired");
+			console.log("default action fired");
 			_productStore.emitChange();
 	}
 })

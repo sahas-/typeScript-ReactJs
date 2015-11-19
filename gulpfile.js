@@ -1,3 +1,4 @@
+/* global rimraf */
 var gulp = require('gulp'),
   ts = require('gulp-typescript'),
   browserify = require('browserify'), 
@@ -15,7 +16,8 @@ gulp.task('typescript', function () {
   var tsOut = gulp.src('src/**/*.ts')
     .pipe(ts({
       noImplicitAny: true,
-      module: 'commonjs'
+      module: 'commonjs',
+      target:'es5'
     }));
   return tsOut.js.pipe(gulp.dest('build'));
 });

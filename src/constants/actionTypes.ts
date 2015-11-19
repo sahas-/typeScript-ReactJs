@@ -1,5 +1,3 @@
-module app{
-	export class actionTypes{
-		static GET_PRODUCTS = "GET_PRODUCTS";
-	}	
+export class actions {
+    public static get GET_PRODUCTS():string { return "GET_PRODUCTS"; }
 }
