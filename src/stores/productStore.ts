@@ -26,7 +26,6 @@ class productStore extends EventEmitter {
 	}
 	
 	getProducts(){
-		console.log("in store, getProducts, name is "+name);
 		return name;
 	}
 	
@@ -36,10 +35,9 @@ var _productStore = new productStore();
 
 dispatcher.register((payload)=>{
 
-	switch(payload){
+	switch(payload.actionType){
 		case actionTypes.actions.GET_PRODUCTS:
-			console.log("test");
-			name = "sahas";
+			name = "test";
 			_productStore.emitChange();
 			break;
 		default: 

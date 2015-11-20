@@ -5,8 +5,10 @@
 
 import React = require('react');
 import DOM = require('react-dom');
+import autobind = require('autobind-decorator');
 import actions = require('../actions/productIndexActions');
 import store = require('../stores/productStore');
+
 
 interface P {
   name?: string;
@@ -17,9 +19,7 @@ interface S {
 }
 
 class productIndex extends React.Component<P,S>{
-  componentWillUpdate(){
-    console.log("received update");
-  }
+
   render() {
 		return React.DOM.div({className:"productIndex-container"},
             React.createElement(gridHeader,{name:"gridHeader"}),
@@ -30,11 +30,23 @@ class productIndex extends React.Component<P,S>{
 }
 
 class test extends React.Component<P,S>{
-  componentWillUpdate(){
-    console.log("received update");
-  }
+  
+  constructor(){
+    super();
+    this.state = {name:"sahas"};
+   }  
+   
+  @autobind    
+  _onChange(){
+      this.setState({name:store.getProducts()});
+    }
+        
+  componentWillMount(){
+      store.addChangeListener(this._onChange);
+   }
+   
   render(){
-    return React.DOM.label({onClick:actions.getProducts},store.getProducts()); 
+    return React.DOM.label({onClick:actions.getProducts},this.state.name); 
   }
 }
 

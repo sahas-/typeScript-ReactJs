@@ -16,7 +16,9 @@ gulp.task('typescript', function() {
   var tsOut = gulp.src('src/**/*.ts')
     .pipe(ts({
           module:'commonjs',
-          target:'ES5'
+          target:'ES5',
+          experimentalDecorators:true,
+          noImplicitAny: true
     }));
   return tsOut.js.pipe(gulp.dest('build'));
 });
