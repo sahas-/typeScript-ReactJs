@@ -36,7 +36,7 @@ var _productStore = new productStore();
 
 dispatcher.register((payload)=>{
 
-	switch(payload.actionType){
+	switch(payload){
 		case actionTypes.actions.GET_PRODUCTS:
 			console.log("test");
 			name = "sahas";

@@ -3,7 +3,6 @@
 import React = require('react');
 import DOM = require('react-dom');
 
-
 interface P {
   name?: string;
 }

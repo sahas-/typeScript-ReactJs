@@ -91,7 +91,6 @@ class gridDataDiv extends React.Component<P,S>{
   }
 }
 
-
 DOM.render(
 	React.createElement(productIndex,{className:'productIndex1'}),
 	document.getElementById('products')
