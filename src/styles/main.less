@@ -1,5 +1,5 @@
 *{
-	box-sizing: border-box;  
+	box-sizing: border-box;
 }
 html, body{
 	height: 100%;
@@ -10,16 +10,34 @@ html, body{
 .flexbox{
 	display: flex;
 }
-.logo{
-	background-image: url("../images/automation.svg");
+.svg{
 	background-repeat: no-repeat;
 	background-position: left;
 	background-size: contain;
 }
+.logo{
+	background-image: url("../images/automation.svg");
+}
+.createNew{
+	background-image: url("../images/plus.svg");
+	margin-left: 15px;
+	height: 22px;
+	width: 22px;
+	cursor: pointer;
+}
+.createNewA{
+	font-size: 14pt;
+	margin-left: 3px;
+	font-weight: bold;
+	text-align: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
 .flex-container-topheader{
 	background: steelblue;
 	height: 65px;
-	display: flex;	
+	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-content: center;
@@ -39,7 +57,7 @@ html, body{
 	margin: 8px;
 	padding: 8px;
 	flex-basis: 30%;
-	flex: 1 1 20%;	
+	flex: 1 1 20%;
 }
 .search-group {
 	color: black;
@@ -62,11 +80,11 @@ html, body{
 	background-image: url("../images/search.svg");
 	background-repeat: no-repeat;
 	background-position: right;
-	background-size: contain;		
+	background-size: contain;
 }
 
 .productIndex-container{
-	margin: 5%;
+	margin: 3%;
 }
 .table{
 	width:100%;
@@ -76,7 +94,7 @@ html, body{
 	align-content: center;
 }
 .tableData{
-	margin-top: 10px;		
+	margin-top: 10px;
 }
 .tableHead{
 	font-size: 14pt;
@@ -91,7 +109,7 @@ html, body{
 }
 .coloredbox{
 	background-position: center;
-	background-size: contain;	
+	background-size: contain;
 	color: whitesmoke;
 	margin-left: 10px;
 	font-weight: bold;

@@ -41,11 +41,11 @@ class topheader extends React.Component<P,S>{
 		return React.DOM.div(null,
 				React.DOM.ul({className:"flex-container-topheader",id:'headerUL'},
 					//logo
-					React.DOM.li({className:"flex-item-topheader logo"}),
+					React.DOM.li({className:"flex-item-topheader svg logo"}),
 					// search component
 					React.DOM.li({className:"flex-item-search"},
-						React.createElement(search,{name:"search"})),						
-					//center header items						
+						React.createElement(search,{name:"search"})),
+					//center header items
 					React.DOM.li({className:"flex-item-centerHeader"},
 						React.createElement(centerHeader,{name:"centerHeaderLi"}))
 				))

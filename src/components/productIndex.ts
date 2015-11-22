@@ -9,7 +9,6 @@ import autobind = require('autobind-decorator');
 import actions = require('../actions/productIndexActions');
 import store = require('../stores/productStore');
 
-
 interface P {
   name?: string;
 }
@@ -19,34 +18,33 @@ interface S {
 }
 
 class productIndex extends React.Component<P,S>{
-
   render() {
 		return React.DOM.div({className:"productIndex-container"},
             React.createElement(gridHeader,{name:"gridHeader"}),
             React.createElement(gridDataDiv,{name:"gridDataDiv"}),
-            React.createElement(test,{name:"test"})                        
+            //React.createElement(test,{name:"test"})
             );
   }
 }
 
 class test extends React.Component<P,S>{
-  
+
   constructor(){
     super();
     this.state = {name:"sahas"};
-   }  
-   
-  @autobind    
+   }
+
+  @autobind
   _onChange(){
       this.setState({name:store.getProducts()});
     }
-        
+
   componentWillMount(){
       store.addChangeListener(this._onChange);
    }
-   
+
   render(){
-    return React.DOM.label({onClick:actions.getProducts},this.state.name); 
+    return React.DOM.label({onClick:actions.getProducts},this.state.name);
   }
 }
 
@@ -65,7 +63,7 @@ class gridHeader extends React.Component<P,S>{
                 React.DOM.li({className:"table tableHead"}, React.DOM.span(null,"APM")),
                 React.DOM.li({className:"table tableHead"}, React.DOM.span(null,"Security")),
                 React.DOM.li({className:"table tableHead"}, React.DOM.span(null,"Utilization"))
-                );                                                      
+                );
   }
 }
 
@@ -98,8 +96,8 @@ class gridDataDiv extends React.Component<P,S>{
                     React.DOM.li({className:"table tableData coloredbox green"}, React.DOM.span(null,"L3")),
                     React.DOM.li({className:"table tableData coloredbox yellow"}, React.DOM.span(null,"L2")),
                     React.DOM.li({className:"table tableData coloredbox red"}, React.DOM.span(null,"L1")),
-                    React.DOM.li({className:"table tableData coloredbox red"}, React.DOM.span(null,"L1")))                   
-                    );                                                      
+                    React.DOM.li({className:"table tableData coloredbox red"}, React.DOM.span(null,"L1")))
+                    );
   }
 }
 
