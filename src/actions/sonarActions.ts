@@ -3,13 +3,13 @@
 import Dispatcher = require("../dispatcher/appDispatcher");
 import actionTypes = require("../constants/actionTypes");
 
-class _productIndexActions{
-	getProducts(){
+class _sonarActions{
+	getProjects(){
 		//Hey dispatcher, go and tell the stores to get products from backend
 		Dispatcher.dispatch({
-			actionType: actionTypes.actions.GET_PRODUCTS
+			actionType: actionTypes.actions.GET_SONAR_PROJECTS
 		})
 	}
 }
-var productIndexActions = new _productIndexActions();
-export = productIndexActions;
+var sonarActions = new _sonarActions();
+export = sonarActions;

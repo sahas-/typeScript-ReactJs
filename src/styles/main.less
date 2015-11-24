@@ -9,23 +9,42 @@ html, body{
 }
 .flexbox{
 	display: flex;
+	align-items: center;
 }
 .svg{
 	background-repeat: no-repeat;
 	background-position: left;
 	background-size: contain;
 }
-.logo{
-	background-image: url("../images/automation.svg");
-}
-.createNew{
-	background-image: url("../images/plus.svg");
+.gear{
+	background-image: url("../images/gearGreen.svg");
 	margin-left: 15px;
 	height: 22px;
 	width: 22px;
 	cursor: pointer;
 }
-.createNewA{
+.logo{
+	background-image: url("../images/automation.svg");
+}
+.addNew{
+	background-image: url("../images/plus_circle.svg");
+	margin-left: 15px;
+	height: 22px;
+	width: 22px;
+	cursor: pointer;
+}
+.modalContent{
+	display: flexbox;
+	//flex-direction: column;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-bottom: 5%;
+	margin-top: 5%;
+}
+.modalContentLabels{
+	margin-right: 30px;
+}
+.genericHeader{
 	font-size: 14pt;
 	margin-left: 3px;
 	font-weight: bold;
@@ -33,7 +52,14 @@ html, body{
 	justify-content: center;
 	cursor: pointer;
 }
-
+.genericButton{
+	display: flex;
+	font-size: 12pt;
+	margin-left: 5%;
+	font-weight: bold;
+	text-align: center;
+	justify-content: flex-end;
+}
 .flex-container-topheader{
 	background: steelblue;
 	height: 65px;

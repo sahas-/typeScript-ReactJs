@@ -1,11 +1,13 @@
 /// <reference path="../../typings/react/react.d.ts" />
 /// <reference path="../../typings/react-dom/react-dom.d.ts" />
+/// <reference path="../actions/sonarActions" />
 
 import React = require('react');
 import DOM = require('react-dom');
 import autobind = require('autobind-decorator');
 import Modal = require('react-modal');
-
+import store = require('../stores/sonarStore');
+import actions = require('../actions/sonarActions');
 
 interface P {
   name?: string;
@@ -35,14 +37,26 @@ class addNewProject extends React.Component<P,S>{
         transform             : 'translate(-50%, -50%)'
       }
   }
+  @autobind
+  _getSonarProjects(){
+    return {projects:actions.getProjects()}
+  }
 
+  @autobind
+  _onUpdate(){
+      this.setState({sonarProjectsList: store.getProjects()});
+    }
+
+  componentWillMount(){
+      store.addChangeListener(this._onUpdate);
+   }
   constructor(){
     super();
-    this.state = {isModalOpen:false};
+    this.state = ({isModalOpen:false,sonarProjectsList:null});
   }
   @autobind
   openModal() {
-    console.log("in open modal");
+    actions.getProjects();
     this.setState({isModalOpen: true});
   }
   @autobind
@@ -51,20 +65,37 @@ class addNewProject extends React.Component<P,S>{
   }
   render(){
     return React.DOM.ul({className:"flexbox"},
-              React.DOM.a({className:"svg createNew"}),
-              React.DOM.a({className:"createNewA",id:"creaetNewAnchor",onClick:this.openModal.bind(this)},"Add new project"),
+              React.DOM.a({className:"svg addNew"}),
+              React.DOM.a({className:"genericHeader",id:"createNewAnchor",onClick:this.openModal.bind(this)},"Add new project"),
               React.createElement(Modal,{isOpen:this.state.isModalOpen,onRequestClose:this.closeModal,style:this.customStyles},
                 React.DOM.div(null,
-                  React.DOM.h3(null,"Add new project"),
-                  React.DOM.form(null,
-                    React.DOM.label(null,"COE"),
-                    React.DOM.input(null),
-                    React.DOM.label(null,"Application"),
-                    React.DOM.input(null)),
-                  React.DOM.button(null,"Save"),
-                  React.DOM.button({onClick:this.closeModal},"Close")))
-              )
+                  React.DOM.h3({className:"genericHeader"},"Project details"),
+                    React.DOM.div({className:"modalContent"},
+                      React.DOM.label({className:"modalContentLabels"},"COE"),
+                      React.DOM.input({placeholder:"Enter COE name here"})),
+                    React.DOM.div({className:"modalContent"},
+                      React.DOM.label({className:"modalContentLabels"},"Application"),
+                      React.DOM.input({placeholder:"Enter App name here"})),
+                    React.DOM.div({className:"modalContent"},
+                      React.DOM.label({className:"modalContentLabels"},"Code Quality"),
+                      React.createElement(projectsList))),
+                  React.DOM.div({className:"genericButton"},
+                    React.DOM.button({className:"genericButton"},"Save"),
+                    React.DOM.button({className:"genericButton",onClick:this.closeModal},"Close"))
+                  ))
+  }
+}
 
+class projectsList extends React.Component<P,S>{
+  @autobind
+  renderChildren(items){
+    return (items.map(function(item){
+      return React.DOM.option({defaultValue:item},item);
+    }));
+  }
+
+  render(){
+    return React.DOM.select(null,this.renderChildren(['adam','brian','jeff']));
   }
 }
 
