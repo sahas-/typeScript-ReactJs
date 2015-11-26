@@ -57,11 +57,15 @@ class addNewProject extends React.Component<P,S>{
   @autobind
   openModal() {
     actions.getProjects();
-    this.setState({isModalOpen: true});
+    this.setState({isModalOpen: true,isCodeQualityEnabled:false});
   }
   @autobind
   closeModal() {
     this.setState({isModalOpen: false});
+  }
+  @autobind
+  toggleCodeQuality(){
+    this.setState({isCodeQualityEnabled: !this.state.isCodeQualityEnabled})
   }
   render(){
     return React.DOM.ul({className:"flexbox"},
@@ -77,12 +81,13 @@ class addNewProject extends React.Component<P,S>{
                       React.DOM.label({className:"modalContentLabels"},"Application"),
                       React.DOM.input({placeholder:"Enter App name here",className:"modalContentData"})),
                     React.DOM.div({className:"modalContent"},
+                      React.DOM.input({className:"modalContentLabels",type:"checkbox",checked:this.state.isCodeQualityEnabled,onClick:this.toggleCodeQuality}),
                       React.DOM.label({className:"modalContentLabels"},"Code Quality"),
-                      React.createElement(foldProjectsList,{items:this.state.sonarProjectsList}))),
+                      React.createElement(foldProjectsList,{items:this.state.sonarProjectsList,isCodeQualityEnabled:!this.state.isCodeQualityEnabled})),
                   React.DOM.div({className:"genericButton"},
                     React.DOM.button({className:"genericButton"},"Save"),
                     React.DOM.button({className:"genericButton",onClick:this.closeModal},"Close"))
-                  ))
+                  )))
   }
 }
 
@@ -100,7 +105,9 @@ class foldProjectsList extends React.Component<P,S>{
   }
 
   render(){
-      return React.DOM.select({className:"modalContentData"},this.renderChildren(this.props.items));      
+      return React.DOM.select({
+        className:"modalContentData",
+        disabled:this.props.isCodeQualityEnabled},this.renderChildren(this.props.items));      
 
   }
 }
