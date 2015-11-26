@@ -72,13 +72,13 @@ class addNewProject extends React.Component<P,S>{
                   React.DOM.h3({className:"genericHeader"},"Project details"),
                     React.DOM.div({className:"modalContent"},
                       React.DOM.label({className:"modalContentLabels"},"COE"),
-                      React.DOM.input({placeholder:"Enter COE name here"})),
+                      React.DOM.input({placeholder:"Enter COE name here",className:"modalContentData"})),
                     React.DOM.div({className:"modalContent"},
                       React.DOM.label({className:"modalContentLabels"},"Application"),
-                      React.DOM.input({placeholder:"Enter App name here"})),
+                      React.DOM.input({placeholder:"Enter App name here",className:"modalContentData"})),
                     React.DOM.div({className:"modalContent"},
                       React.DOM.label({className:"modalContentLabels"},"Code Quality"),
-                      React.createElement(projectsList))),
+                      React.createElement(foldProjectsList,{items:this.state.sonarProjectsList}))),
                   React.DOM.div({className:"genericButton"},
                     React.DOM.button({className:"genericButton"},"Save"),
                     React.DOM.button({className:"genericButton",onClick:this.closeModal},"Close"))
@@ -86,16 +86,22 @@ class addNewProject extends React.Component<P,S>{
   }
 }
 
-class projectsList extends React.Component<P,S>{
+class foldProjectsList extends React.Component<P,S>{
   @autobind
   renderChildren(items){
-    return (items.map(function(item){
-      return React.DOM.option({defaultValue:item},item);
-    }));
+    if(typeof items === 'undefined' || (items==='') || (items===null)){
+      return React.DOM.option(null,null);
+    }
+    else{
+      return (items.map(function(item){
+        return React.DOM.option({defaultValue:item.nm,key:item.id},item.nm);
+      }));
+    }
   }
 
   render(){
-    return React.DOM.select(null,this.renderChildren(['adam','brian','jeff']));
+      return React.DOM.select({className:"modalContentData"},this.renderChildren(this.props.items));      
+
   }
 }
 

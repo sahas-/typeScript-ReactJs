@@ -5,9 +5,10 @@ var gulp = require('gulp'),
   source = require('vinyl-source-stream'),
   minifyCSS = require('gulp-minify-css'),
   less = require('gulp-less'),
-  glob = require ('glob')
-  rimraf = require('rimraf'),
-  runSequence = require('run-sequence');
+  glob = require ('glob'),
+  runSequence = require('run-sequence'),
+  rimraf = require('rimraf');
+
 
 gulp.task('clean',function(cb){
     rimraf('build',cb);
