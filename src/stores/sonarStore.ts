@@ -6,10 +6,10 @@
 
 import EventEmitter = require('eventemitter3');
 import http = require('superagent');
-import promise = require('promise');
 import dispatcher = require('../dispatcher/appDispatcher');
 import actionTypes = require('../constants/actionTypes');
-
+import appConfig = require('../appConfig');
+var promise = require('promise');
 
 
 var CHANGE_EVENT = 'change';
@@ -34,8 +34,9 @@ class _sonarStore extends EventEmitter {
 	}
 	
 	getProjectsFromSonar(){
+		var sonarConfig = new appConfig.sonar();		
 		return new promise((fulfill, reject) =>{
-			http.get("http://nemo.sonarqube.org/api/projects")
+			http.get(sonarConfig.config().baseurl)
 					.end((err,res)=>{
 						if(err) reject(err);
 						fulfill(res.body);	

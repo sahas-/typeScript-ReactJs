@@ -1,13 +1,13 @@
 /// <reference path="../../typings/react/react.d.ts" />
-/// <reference path="../../typings/react-dom/react-dom.d.ts" />
+/// <reference path="../../typings/react/react-dom.d.ts" />
 /// <reference path="../actions/productIndexActions" />
 /// <reference path="../stores/productStore"/>
 
 import React = require('react');
 import DOM = require('react-dom');
-import autobind = require('autobind-decorator');
 import actions = require('../actions/productIndexActions');
 import store = require('../stores/productStore');
+var autobind = require('autobind-decorator');
 
 interface P {
   name?: string;

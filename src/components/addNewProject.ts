@@ -1,13 +1,13 @@
 /// <reference path="../../typings/react/react.d.ts" />
-/// <reference path="../../typings/react-dom/react-dom.d.ts" />
+/// <reference path="../../typings/react/react-dom.d.ts" />
 /// <reference path="../actions/sonarActions" />
 
 import React = require('react');
 import DOM = require('react-dom');
-import autobind = require('autobind-decorator');
-import Modal = require('react-modal');
 import store = require('../stores/sonarStore');
 import actions = require('../actions/sonarActions');
+var autobind = require('autobind-decorator');
+var Modal = require('react-modal');
 
 interface P {
   name?: string;
