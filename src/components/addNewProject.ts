@@ -83,7 +83,8 @@ class addNewProject extends React.Component<P,S>{
                     React.DOM.div({className:"modalContent"},
                       React.DOM.input({className:"modalContentLabels",type:"checkbox",checked:this.state.isCodeQualityEnabled,onClick:this.toggleCodeQuality}),
                       React.DOM.label({className:"modalContentLabels"},"Code Quality"),
-                      React.createElement(foldProjectsList,{items:this.state.sonarProjectsList,isCodeQualityEnabled:!this.state.isCodeQualityEnabled})),
+                      React.createElement(foldProjectsList,{items:this.state.sonarProjectsList,isCodeQualityEnabled:!this.state.isCodeQualityEnabled}),
+                      React.createElement(exceptionComponent,{items:this.state.sonarProjectsList})),                                                                
                   React.DOM.div({className:"genericButton"},
                     React.DOM.button({className:"genericButton"},"Save"),
                     React.DOM.button({className:"genericButton",onClick:this.closeModal},"Close"))
@@ -91,14 +92,25 @@ class addNewProject extends React.Component<P,S>{
   }
 }
 
+class exceptionComponent extends React.Component<P,S>{
+  render(){
+    if(typeof this.props.items === 'undefined' || (this.props.items==='') || (this.props.items===null)){
+      return React.DOM.label(null,null);
+    }
+    else{
+        return React.DOM.a({className:(this.props.items.isSuccess?null:"svg exception")});
+    }
+  }
+}
+
 class foldProjectsList extends React.Component<P,S>{
   @autobind
   renderChildren(items){
-    if(typeof items === 'undefined' || (items==='') || (items===null)){
+    if(typeof items === 'undefined' || (items==='') || (items===null) || (!items.isSuccess)){
       return React.DOM.option(null,null);
     }
     else{
-      return (items.map(function(item){
+      return (items.data.map(function(item){
         return React.DOM.option({defaultValue:item.nm,key:item.id},item.nm);
       }));
     }

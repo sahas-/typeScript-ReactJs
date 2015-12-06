@@ -13,7 +13,7 @@ var promise = require('promise');
 
 
 var CHANGE_EVENT = 'change';
-var projectsList=[];
+var projectsList={};
 class _sonarStore extends EventEmitter {
 
 	public emitChange(): void {
@@ -38,10 +38,24 @@ class _sonarStore extends EventEmitter {
 		return new promise((fulfill, reject) =>{
 			http.get(sonarConfig.config().baseurl)
 					.end((err,res)=>{
-						if(err) reject(err);
-						fulfill(res.body);	
+							if(err) {
+								projectsList = {
+									"isSuccess": false,
+									"data":err
+								}
+								reject(projectsList);
+							}
+							else{
+								projectsList = {
+									"isSuccess": true,
+									"data":res.body
+								}
+								fulfill(projectsList);	
+							}
+						this.emitChange();		
 					})
 		})
+		
 	}
 
 }
@@ -52,14 +66,7 @@ dispatcher.register((payload)=>{
 	switch(payload.actionType){
 		case actionTypes.actions.GET_SONAR_PROJECTS:
 			projectsList=[];
-			sonarStore.getProjectsFromSonar()
-				.then((res)=>{
-					projectsList = res;
-					sonarStore.emitChange();					
-				},(error)=>{
-					console.log(err);
-					sonarStore.emitChange();
-				})
+			sonarStore.getProjectsFromSonar();
 			break;
 	}
 })
