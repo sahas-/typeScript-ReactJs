@@ -17,11 +17,16 @@ interface S {
   complete?: boolean;
 }
 
+DOM.render(
+	React.createElement(actionBar),
+	document.getElementById('actionbar')
+);
+
 //consolidates all components for actionbar
-class actionBar extends React.Component<P,S>{
+export class actionBar extends React.Component<P,S>{
 	render(){
 		return React.DOM.div({className:"productIndex-container"},
-				    React.createElement(addNewProject))
+				   React.createElement(addNewProject))
 	}
 }
 
@@ -124,7 +129,3 @@ class foldProjectsList extends React.Component<P,S>{
   }
 }
 
-DOM.render(
-	React.createElement(actionBar),
-	document.getElementById('actionbar')
-);

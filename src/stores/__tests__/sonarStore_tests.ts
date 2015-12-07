@@ -1,5 +1,11 @@
-var sinon= require('sinon');
-var chai = require('chai');
+///<reference path="../../../typings/mocha/mocha.d.ts"/>
+///<reference path="../../../typings/chai/chai.d.ts"/>
+///<reference path="../../../typings/sinon/sinon.d.ts"/>
+///<reference path="../../appConfig"/>
+
+import sinon= require('sinon');
+import chai = require('chai');
+import appConfig = require('../../appConfig');
 var expect = require('chai').expect;
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
@@ -11,7 +17,6 @@ describe('sonar store unit and integration tests',function(){
 		store = require('../sonarStore');
 		action = require('../../actions/sonarActions');
 		dispatcher = require('../../dispatcher/AppDispatcher');
-		appConfig = require('../../appConfig');			
 	})
 	it('projectslist should be initialized empty',function(){
 		expect(store.getProjects()).to.be.empty;
